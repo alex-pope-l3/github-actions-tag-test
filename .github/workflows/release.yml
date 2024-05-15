@@ -21,6 +21,9 @@ jobs:
 
         steps:
 
+            - name: Say hello
+              run: echo "Hello World"
+  
             - name: Generate Tag
               id: generate-tag
               run: echo "tag=$(date '+%y.%j.%H%M')" >> "$GITHUB_OUTPUT"
