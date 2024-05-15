@@ -21,9 +21,18 @@ jobs:
 
         steps:
 
+            - name: Say hello
+              run: echo "Hello World"
+  
             - name: Generate Tag
               id: generate-tag
               run: echo "tag=$(date '+%y.%j.%H%M')" >> "$GITHUB_OUTPUT"
+            
+            - name: Assign tag to environment variable
+              run: echo "${{ steps.generate-tag.outputs.tag }}" >> $RELEASE_TAG
+            
+            - name: Print release tag
+              run: echo $RELEASE_TAG
             
             - name: Assign tag
               uses: actions/github-script@v7
