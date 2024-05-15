@@ -23,4 +23,7 @@ jobs:
             - name: Generate Tag
               id: generate-tag
               run: echo "tag=$(date '+%y.%m.%d')" >> "$GITHUB_OUTPUT"
+            
+            - name: Assign tag
+              run: echo ${{ steps.generate-tag.outputs.tag }}
   
