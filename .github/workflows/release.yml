@@ -25,5 +25,13 @@ jobs:
               run: echo "tag=$(date '+%y.%m.%d')" >> "$GITHUB_OUTPUT"
             
             - name: Assign tag
-              run: echo ${{ steps.generate-tag.outputs.tag }}
+              uses: actions/github-script@v7
+              with:
+                script: |
+                  github.rest.git.createRef({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    ref: "refs/tags/${{ steps.generate-tag.outputs.tag }}",
+                    sha: context.sha
+                  })
   
