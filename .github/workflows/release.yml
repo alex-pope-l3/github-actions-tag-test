@@ -16,6 +16,7 @@ jobs:
 
     tag_last_commit:
         name: Tag last commit
+        permissions: write-all
         runs-on: ubuntu-latest
 
         steps:
